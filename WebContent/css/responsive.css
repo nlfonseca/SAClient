@@ -1,0 +1,20 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width : 0px) and (max-width : 480px) {
+    .container-photos__item {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 40em) {
+    body {
+        font-size: 80%;
+    }
+
+    .content__header h1 {
+        font-size: 2.5em;
+    }
+
+    .content__main > a {
+        margin: 20px 0;
+    }
+}
