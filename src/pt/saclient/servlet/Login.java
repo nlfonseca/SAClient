@@ -2,7 +2,6 @@ package pt.saclient.servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
@@ -16,19 +15,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-
 /**
- * Servlet implementation class login
+ * Servlet implementation class Login
  */
-@WebServlet(description = "Login Servlet", urlPatterns = { "/login" })
-public class login extends HttpServlet {
+@WebServlet("/login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public login() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,12 +41,16 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("================ aqui =================");
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String email = request.getParameter("mail");
+		String password = request.getParameter("passwd");
 		
-		URL url = new URL("http://localhost:8080/INSTAGRAMALIKE/users/login?username=" + username + "&password=" + password);
+		System.out.println("email = " + email);
+		System.out.println("password = " + password);
+		
+		String host = "192.168.1.5:9763";
+		
+		URL url = new URL("http://" + host + "/SARestFul_1.0.0/1.0/services/servidorjaxrs/services/login/");
 		URLConnection con = url.openConnection();
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		
@@ -62,11 +63,11 @@ public class login extends HttpServlet {
 		
 		if (!message.equals("Error")) {
 			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
+			session.setAttribute("email", email);
 			session.setAttribute("userId", message);
 			
 			//redirect to index
-			String r = "http://localhost:8080/insta/index.jsp";
+			String r = "http://localhost:8080/saclient/index.jsp";
 			response.sendRedirect(r);
 			
 		} else {
@@ -77,5 +78,4 @@ public class login extends HttpServlet {
 			out.println("<font size='6' color='red'>" + message + "</font>");
 		}
 	}
-
 }
