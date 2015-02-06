@@ -2,6 +2,7 @@ package pt.saclient.servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
@@ -44,6 +45,17 @@ public class Login extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 	}
+	
+	/**
+	 * convertStreamToString
+	 * 
+	 * @param is
+	 * @return
+	 */
+	static String convertStreamToString(java.io.InputStream is) {
+		java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+		return s.hasNext() ? s.next() : "";
+	}
 
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
@@ -58,37 +70,28 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("mail");
 		String password = request.getParameter("passwd");
 		
-		String host = "192.168.1.5:9763";
+//		String host = "192.168.1.5:9763";
+		String host = "172.16.4.209:9763";
 		
+		//http://172.16.4.209:9763/SARestFul_1.0.0/1.0/services/servidorjaxrs
 		URL url = new URL("http://" + host + "/SARestFul_1.0.0/1.0/services/servidorjaxrs/services/login?mail=" + email + "&passwd=" + password);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("POST");
+		con.setRequestProperty("Accept", "application/json");
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
-		StringBuilder sb = new StringBuilder();
-		String line = null;
-        
-		while ((line = br.readLine()) != null) {
-            sb.append(line + "\n");
-        }
-        br.close();
-        
-        String jsonData = "[" + sb.toString() + "]";
-        JSONArray jObj = null;
+		// Erro de conex‹o
+		if (con.getResponseCode() != 200) {
+			throw new RuntimeException("Failed : HTTP error code : " + con.getResponseCode());
+		}
 		
-        try {
-            jObj = new JSONArray(jsonData);
-            System.out.println("jObj = " + jObj);
-            
-        } catch (JSONException e) {
-        	e.printStackTrace();
-        }
-        
-        // tentar ver isto
-		JSONObject json = new JSONObject(sb);
-		System.out.println("json = " + json);
-        
-        try {
+		InputStream stream = con.getInputStream();
+		String data = convertStreamToString(stream);
+		
+		// JSON Object
+		JSONObject json;
+		
+		try {
+			json = new JSONObject(data);
 			
 			// h‡ dados
 			if (!json.toString().equals("{}")) {
@@ -105,14 +108,12 @@ public class Login extends HttpServlet {
 					usr.setUsername(userJSON.getString("username"));
 					usr.setPhoto(userJSON.getString("photo"));
 					
-					System.out.println("id = " + userJSON.getInt("id"));
-					System.out.println("cc = " + userJSON.getLong("CC"));
-					System.out.println("email = " + userJSON.getString("email"));
-					System.out.println("username = " + userJSON.getString("username"));
-					System.out.println("photo = " + userJSON.getString("photo"));
-					
 					HttpSession session = request.getSession();
-					session.setAttribute("email", email);
+					session.setAttribute("usr_id", usr.getId());
+					session.setAttribute("usr_email", usr.getEmail());
+					session.setAttribute("usr_cc", usr.getCC());
+					session.setAttribute("usr_username", usr.getUsername());
+					session.setAttribute("usr_photo", usr.getPhoto());
 					
 					//redirect to index
 					String r = "http://localhost:8080/saclient/index.jsp";
@@ -130,9 +131,9 @@ public class Login extends HttpServlet {
 				response.sendRedirect(r);
 			}
 			
-		} catch (JSONException e1) {
+		} catch (JSONException e2) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e2.printStackTrace();
 		}
 	}
 }
