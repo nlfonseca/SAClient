@@ -30,7 +30,7 @@
 					
 					<section class="content__main">
 						<div class="form-login">
-							<form action="/saclient/login" method="post"> 
+							<form action="/saclient/login" method="POST"> 
 								
 								<label class="form-login__label" for="email">Email</label>
 								<div class="input-group">
