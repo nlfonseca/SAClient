@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class logout
+ * Servlet implementation class Logout
  */
-@WebServlet("/logout")
-public class logout extends HttpServlet {
+@WebServlet(description = "Logout Servlet", urlPatterns = { "/logout" })
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public logout() {
+    public Logout() {
         super();
         // TODO Auto-generated constructor stub
     }
