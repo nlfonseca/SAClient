@@ -70,10 +70,10 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("mail");
 		String password = request.getParameter("passwd");
 		
-//		String host = "192.168.1.5:9763";
+		// String host = "192.168.1.5:9763";
 		String host = "172.16.4.209:9763";
 		
-		//http://172.16.4.209:9763/SARestFul_1.0.0/1.0/services/servidorjaxrs
+		// http://172.16.4.209:9763/SARestFul_1.0.0/1.0/services/servidorjaxrs
 		URL url = new URL("http://" + host + "/SARestFul_1.0.0/1.0/services/servidorjaxrs/services/login?mail=" + email + "&passwd=" + password);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("POST");
@@ -97,6 +97,7 @@ public class Login extends HttpServlet {
 			if (!json.toString().equals("{}")) {
 				
 				JSONObject userJSON = json.getJSONObject("User");
+				System.out.println(userJSON);
 				
 				// extrair dados do user
 				try {
@@ -106,6 +107,7 @@ public class Login extends HttpServlet {
 					usr.setCC(userJSON.getLong("CC"));
 					usr.setEmail(userJSON.getString("email"));
 					usr.setUsername(userJSON.getString("username"));
+					usr.setId(userJSON.getInt("isAdmin"));
 					usr.setPhoto(userJSON.getString("photo"));
 					
 					HttpSession session = request.getSession();
@@ -113,11 +115,19 @@ public class Login extends HttpServlet {
 					session.setAttribute("usr_email", usr.getEmail());
 					session.setAttribute("usr_cc", usr.getCC());
 					session.setAttribute("usr_username", usr.getUsername());
+					session.setAttribute("usr_is_admin", usr.getIsAdmin());
 					session.setAttribute("usr_photo", usr.getPhoto());
 					
 					//redirect to index
-					String r = "http://localhost:8080/saclient/index.jsp";
-					response.sendRedirect(r);
+					if (usr.getIsAdmin() == 1) {
+						String r = "http://localhost:8080/saclient/indexAdmin.jsp";
+						response.sendRedirect(r);
+					
+					} else {
+						String r = "http://localhost:8080/saclient/index.jsp";
+						response.sendRedirect(r);
+					}
+					
 					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block

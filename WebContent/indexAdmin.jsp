@@ -21,14 +21,14 @@
 	
     <body>
         <%
-			String usr_id = "";
-        	String usr_email = "";
-        	String usr_cc = "";
-        	String usr_username = "";
-        	String usr_is_admin = "";
-        	String usr_photo = "";
-        	
-        	if (session.getAttribute("usr_id") == null) {
+	        String usr_id = "";
+	    	String usr_email = "";
+	    	String usr_cc = "";
+	    	String usr_username = "";
+	    	String usr_is_admin = "";
+	    	String usr_photo = "";
+	    	
+	    	if (session.getAttribute("usr_id") == null) {
 	        	String redirectURL = "login.jsp";
 	            response.sendRedirect(redirectURL);
 	        } else {
@@ -39,8 +39,8 @@
 	        	usr_is_admin = (String) session.getAttribute("usr_is_admin");
 	        	usr_photo = (String) session.getAttribute("usr_photo");
 	        }
-        
-        	String pageName = "Profile";
+	    
+	    	String pageName = "Profile";
 		%>
     	<div class="main-container">
     		<!-- nav -->

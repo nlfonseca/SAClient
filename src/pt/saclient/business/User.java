@@ -10,17 +10,11 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private int isAdmin;
 	private String photo;
 	
 	/**
 	 * Constructor of User
-	 * 
-	 * @param uId
-	 * @param uCC
-	 * @param uName
-	 * @param uPass
-	 * @param uEmail
-	 * @param uPhoto
 	 */
 	public User() {
 		this.userId = -1;
@@ -28,6 +22,7 @@ public class User {
 		this.username = null;
 		this.password = null;
 		this.email = null;
+		this.isAdmin = -1;
 		this.photo = null;
 	}
 	
@@ -72,6 +67,14 @@ public class User {
 	 */
 	public String getEmail() {
 		return email;
+	}
+	
+	/**
+	 * getIsAdmin()
+	 * @return isAdmin
+	 */
+	public int getIsAdmin() {
+		return isAdmin;
 	}
 	
 	/**
@@ -123,6 +126,14 @@ public class User {
 	 */
 	public void setEmail(String uEmail) {
 		this.email = uEmail;
+	}
+	
+	/**
+	 * setIsAdmin()
+	 * @param uIsAdmin
+	 */
+	public void setIsAdmin(int uIsAdmin) {
+		this.isAdmin = uIsAdmin;
 	}
 	
 	/**
