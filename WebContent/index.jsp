@@ -21,7 +21,6 @@
 	
     <body>
         <%
-        
 			int usr_id = -1;
         	String usr_email = "";
         	long usr_cc = -1;
@@ -62,10 +61,10 @@
 					</div>
 				</nav>
 				<nav class="menu-side">
-					<a href="#">
+					<!-- <a href="#">
 						<i class="fa fa-search"></i>
 						<input class="search-tag" id="search-tag" name="search-tag" title="search tag" type="text" placeholder="Search">
-					</a>
+					</a> -->
 					<a href="index.jsp"><i class="fa fa-user"></i> Profile</a>
 					<form action="/saclient/logout" method="post">
 						<input class="input-logout" type="submit" value="Logout" />
