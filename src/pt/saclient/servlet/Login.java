@@ -71,7 +71,8 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("passwd");
 		
 		// String host = "192.168.1.5:9763";
-		String host = "172.16.4.209:9763";
+		//String host = "172.16.4.209:9763";
+		String host = "172.16.5.76:9763";
 		
 		// http://172.16.4.209:9763/SARestFul_1.0.0/1.0/services/servidorjaxrs
 		URL url = new URL("http://" + host + "/SARestFul_1.0.0/1.0/services/servidorjaxrs/services/login?mail=" + email + "&passwd=" + password);
@@ -79,7 +80,7 @@ public class Login extends HttpServlet {
 		con.setRequestMethod("POST");
 		con.setRequestProperty("Accept", "application/json");
 		
-		// Erro de conex‹o
+		// Erro de conexï¿½o
 		if (con.getResponseCode() != 200) {
 			throw new RuntimeException("Failed : HTTP error code : " + con.getResponseCode());
 		}
@@ -93,7 +94,7 @@ public class Login extends HttpServlet {
 		try {
 			json = new JSONObject(data);
 			
-			// h‡ dados
+			// hï¿½ dados
 			if (!json.toString().equals("{}")) {
 				
 				JSONObject userJSON = json.getJSONObject("User");
