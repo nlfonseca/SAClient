@@ -77,16 +77,7 @@
 						 
 						 <!-- result -->
 			            <div id="container-photos" class="row text-left">
-			            	<label><input type="radio" name="vote-player" id="1"> Name 1</label>
-			            	<label><input type="radio" name="vote-player" id="2"> Name 2</label>
-			            	<label><input type="radio" name="vote-player" id="3"> Name 3</label>
-			            	<label><input type="radio" name="vote-player" id="4"> Name 4</label>
-			            	<label><input type="radio" name="vote-player" id="5"> Name 5</label>
-			            	<label><input type="radio" name="vote-player" id="6"> Name 6</label>
-			            	<label><input type="radio" name="vote-player" id="7"> Name 7</label>
-			            	<label><input type="radio" name="vote-player" id="8"> Name 8</label>
-			            	<label><input type="radio" name="vote-player" id="9"> Name 9</label>
-			            	<label><input type="radio" name="vote-player" id="10"> Name 10</label>
+			            	
 			            </div>
 
 					</section>

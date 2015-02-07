@@ -97,7 +97,7 @@ public class Login extends HttpServlet {
 			if (!json.toString().equals("{}")) {
 				
 				JSONObject userJSON = json.getJSONObject("User");
-				System.out.println(userJSON);
+				//System.out.println(userJSON);
 				
 				// extrair dados do user
 				try {
@@ -107,7 +107,7 @@ public class Login extends HttpServlet {
 					usr.setCC(userJSON.getLong("CC"));
 					usr.setEmail(userJSON.getString("email"));
 					usr.setUsername(userJSON.getString("username"));
-					usr.setId(userJSON.getInt("isAdmin"));
+					usr.setIsAdmin(userJSON.getInt("isAdmin"));
 					usr.setPhoto(userJSON.getString("photo"));
 					
 					HttpSession session = request.getSession();
@@ -118,8 +118,10 @@ public class Login extends HttpServlet {
 					session.setAttribute("usr_is_admin", usr.getIsAdmin());
 					session.setAttribute("usr_photo", usr.getPhoto());
 					
+					Integer adminAux = usr.getIsAdmin();
+					
 					//redirect to index
-					if (usr.getIsAdmin() == 1) {
+					if (adminAux.equals(1)) {
 						String r = "http://localhost:8080/saclient/indexAdmin.jsp";
 						response.sendRedirect(r);
 					

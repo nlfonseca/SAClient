@@ -21,22 +21,23 @@
 	
     <body>
         <%
-			String usr_id = "";
+        
+			int usr_id = -1;
         	String usr_email = "";
-        	String usr_cc = "";
+        	long usr_cc = -1;
         	String usr_username = "";
-        	String usr_is_admin = "";
+        	int usr_is_admin = -1;
         	String usr_photo = "";
         	
         	if (session.getAttribute("usr_id") == null) {
 	        	String redirectURL = "login.jsp";
 	            response.sendRedirect(redirectURL);
 	        } else {
-	        	usr_id = (String) session.getAttribute("usr_id");
+	        	usr_id = (Integer) session.getAttribute("usr_id");
 	        	usr_email = (String) session.getAttribute("usr_email");
-	        	usr_cc = (String) session.getAttribute("usr_cc");
+	        	usr_cc = (Long) session.getAttribute("usr_cc");
 	        	usr_username = (String) session.getAttribute("usr_username");
-	        	usr_is_admin = (String) session.getAttribute("usr_is_admin");
+	        	usr_is_admin = (Integer) session.getAttribute("usr_is_admin");
 	        	usr_photo = (String) session.getAttribute("usr_photo");
 	        }
         
