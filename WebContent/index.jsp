@@ -40,6 +40,15 @@
 	        	usr_is_admin = (Integer) session.getAttribute("usr_is_admin");
 	        	usr_photo = (String) session.getAttribute("usr_photo");
 	        }
+        	
+        	String photoUser = "";
+        	
+        	if (usr_photo == "") {
+        		photoUser = "img/avatar.png";
+        		
+        	} else {
+        		photoUser = "data:image/png;base64," +  usr_photo;
+        	}
         
         	String pageName = "Profile";
 		%>
@@ -48,7 +57,7 @@
 			<div class="menu-wrap">
 				<nav class="menu-top">
 					<div class="profile">
-						<img src="img/avatar.png" alt="<%= usr_username %>" style="width:42px;"/>
+						<img src="<%= photoUser %>" alt="<%= usr_username %>" style="width:42px;"/>
 						<span class="profile-username" data-userid="<%= usr_id %>"><%= usr_username %></span>
 					</div>
 				</nav>
@@ -58,7 +67,7 @@
 						<input class="search-tag" id="search-tag" name="search-tag" title="search tag" type="text" placeholder="Search">
 					</a>
 					<a href="index.jsp"><i class="fa fa-user"></i> Profile</a>
-					<form action="/insta/logout" method="post">
+					<form action="/saclient/logout" method="post">
 						<input class="input-logout" type="submit" value="Logout" />
 					</form>
 				</nav>
