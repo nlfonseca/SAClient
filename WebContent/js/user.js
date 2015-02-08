@@ -1,19 +1,26 @@
-(function() {
-
-	getCandidates();
-
+(function($) {
+	
+	/**
+	 * Get Candidates Function
+	 */
 	function getCandidates() {
-		var ip = '172.16.5.76:9763';
-		var dataURL = 'http://' + ip + '/SARestFul_1.0.0-3/1.0/services/servidorjaxrs/services/candidates/';
-
+		
 		$.ajax({
 	        type: 'GET',
-	        dataType: 'jsonp',
-	        url: dataURL
+	        dataType: 'json',
+	        url: "/saclient/getcandidates"
+//        	url: "/saclient/getvotesbycandidate" --> GRAFICOS
+//	        url: "/saclient/getvotesofday" --> GRAFICOS
+//	        url: "/saclient/getvoteschangedofday" --> GRAFICOS
 	    })
 	    .done(function(data) {
 	    	console.log(data);
+	    })
+	    .fail(function(xhr, data) {
+	    	console.log("Error...");
 	    });
 	}
+	
+	getCandidates();
 
-})();
+})(jQuery);

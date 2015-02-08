@@ -19,7 +19,6 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description>Logout Servlet</description>
     <display-name>Logout</display-name>
@@ -29,5 +28,45 @@
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Get Candidates</description>
+    <display-name>GetCandidates</display-name>
+    <servlet-name>GetCandidates</servlet-name>
+    <servlet-class>pt.saclient.servlet.GetCandidates</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCandidates</servlet-name>
+    <url-pattern>/getcandidates</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Get Votes By Candidate</description>
+    <display-name>GetVotesByCandidate</display-name>
+    <servlet-name>GetVotesByCandidate</servlet-name>
+    <servlet-class>pt.saclient.servlet.GetVotesByCandidate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetVotesByCandidate</servlet-name>
+    <url-pattern>/getvotesbycandidate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Get Votes Of Day</description>
+    <display-name>GetVotesOfDay</display-name>
+    <servlet-name>GetVotesOfDay</servlet-name>
+    <servlet-class>pt.saclient.servlet.GetVotesOfDay</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetVotesOfDay</servlet-name>
+    <url-pattern>/getvotesofday</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Get Votes Changed Of Day</description>
+    <display-name>GetVotesChangedOfDay</display-name>
+    <servlet-name>GetVotesChangedOfDay</servlet-name>
+    <servlet-class>pt.saclient.servlet.GetVotesChangedOfDay</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetVotesChangedOfDay</servlet-name>
+    <url-pattern>/getvoteschangedofday</url-pattern>
   </servlet-mapping>
 </web-app>

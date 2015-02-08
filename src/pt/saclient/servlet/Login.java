@@ -22,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import pt.saclient.business.GlobalVariables;
 import pt.saclient.business.User;
 
 /**
@@ -45,17 +46,6 @@ public class Login extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 	}
-	
-	/**
-	 * convertStreamToString
-	 * 
-	 * @param is
-	 * @return
-	 */
-	static String convertStreamToString(java.io.InputStream is) {
-		java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-		return s.hasNext() ? s.next() : "";
-	}
 
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
@@ -70,12 +60,7 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("mail");
 		String password = request.getParameter("passwd");
 		
-		// String host = "192.168.1.5:9763";
-		String host = "172.16.4.209:9763";
-		// String host = "172.16.5.76:9763";
-		
-		// http://172.16.4.209:9763/SARestFul_1.0.0/1.0/services/servidorjaxrs
-		URL url = new URL("http://" + host + "/SARestFul_1.0.0/1.0/services/servidorjaxrs/services/login?mail=" + email + "&passwd=" + password);
+		URL url = new URL("http://" + GlobalVariables.HOST + "/SARestFul_1.0.0/1.0/services/servidorjaxrs/services/login?mail=" + email + "&passwd=" + password);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("POST");
 		con.setRequestProperty("Accept", "application/json");
@@ -86,7 +71,7 @@ public class Login extends HttpServlet {
 		}
 		
 		InputStream stream = con.getInputStream();
-		String data = convertStreamToString(stream);
+		String data = GlobalVariables.convertStreamToString(stream);
 		
 		// JSON Object
 		JSONObject json;
