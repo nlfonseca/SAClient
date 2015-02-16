@@ -71,7 +71,6 @@
 					</form>
 				</nav>
 			</div>
-			
 			<button class="menu-button" id="open-button">Open Menu</button>
 			
 			<!-- content -->
@@ -85,8 +84,8 @@
 					<section class="content__main">
 						 
 						 <!-- result -->
-			            <div id="container-photos" class="row text-left">
-			            	
+			            <div id="container-photos" class="row text-center">
+			            	<div id="chartdiv" style="width: 640px; height: 400px;background: #fff;margin: 0 auto;"></div>
 			            </div>
 
 					</section>
@@ -98,6 +97,9 @@
         <script src="js/bootstrap.min.js"></script>
 		<script src="js/classie.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/amcharts/amcharts.js"></script>
+		<script src="js/amcharts/serial.js"></script>
+		<script src="js/admin.js"></script>
         
     </body>
 

@@ -79,7 +79,7 @@ public class Login extends HttpServlet {
 		try {
 			json = new JSONObject(data);
 			
-			// h� dados
+			// ha dados
 			if (!json.toString().equals("{}")) {
 				
 				JSONObject userJSON = json.getJSONObject("User");

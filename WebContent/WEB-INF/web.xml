@@ -79,4 +79,14 @@
     <servlet-name>SetVote</servlet-name>
     <url-pattern>/setvote</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Get Vote Of User</description>
+    <display-name>GetVoteOfUser</display-name>
+    <servlet-name>GetVoteOfUser</servlet-name>
+    <servlet-class>pt.saclient.servlet.GetVoteOfUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetVoteOfUser</servlet-name>
+    <url-pattern>/getvoteofuser</url-pattern>
+  </servlet-mapping>
 </web-app>

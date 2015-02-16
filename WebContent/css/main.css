@@ -3,8 +3,8 @@
 .clearfix:after { clear: both; }
 
 body {
-    background: #b4bad2;
-    color: #fffce1;
+    background: #406DA4;
+    color: #fff;
     font-weight: 400;
     font-family: 'Raleway', Arial, sans-serif;
     padding: 0
@@ -32,7 +32,7 @@ section {
 }
 
 .form-login {
-    background: #373a47;
+    background: #01295E;
     color: #b8b7ad;
     display: inline-block;
     margin: auto;
@@ -76,7 +76,7 @@ section {
     position: fixed;
     width: 100%;
     z-index: 3;
-    background: #b4bad2;
+    background: #406DA4;
 }
 
 .content__header h1 {
@@ -169,6 +169,36 @@ section {
     -webkit-transition: all .3s linear;
     transition: all .3s linear;*/
     opacity: 1;
+}
+
+.player {
+	display: inline-block;
+	margin: 20px;
+}
+
+.player__name {
+	margin-bottom: 0;
+	color: #000;
+}
+
+.player__club {
+	font-size: 1.1em !important;
+	margin-bottom: 0;
+}
+
+.player__nationality {
+	margin-top: 6px;
+}
+.nationality-image {
+	display: inline-block;
+	vertical-align: top;
+}
+.nationality-text {
+	font-size: 1em !important;
+	margin-bottom: 0;
+	margin-left: 5px;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .photo-wrapper {
@@ -299,8 +329,10 @@ section {
     display: none;
     z-index: 102;
     position: absolute;
-    right: 5px;
-    top: 16px;
+    left: 50%;
+    top: 50%;
+    margin-left: -110px;
+    margin-top: -10px;
 }
 
 .modal-dialog {
@@ -513,3 +545,6 @@ section {
 }
 
 
+.amcharts-main-div > .amcharts-chart-div > a {
+    display: none !important;
+}

@@ -2,7 +2,7 @@ package pt.saclient.business;
 
 public class GlobalVariables {
 	
-	public static final String HOST = "192.168.1.2:9763";
+	public static final String HOST = "172.16.7.152:9763";//"192.168.1.67:9763";
 	
 	/**
 	 * convertStreamToString

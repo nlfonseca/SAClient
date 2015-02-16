@@ -64,7 +64,7 @@
 						<i class="fa fa-search"></i>
 						<input class="search-tag" id="search-tag" name="search-tag" title="search tag" type="text" placeholder="Search">
 					</a> -->
-					<a href="index.jsp"><i class="fa fa-user"></i> Profile</a>
+					<!-- <a href="index.jsp"><i class="fa fa-user"></i> Profile</a> -->
 					<form action="/saclient/logout" method="post">
 						<input class="input-logout" type="submit" value="Logout" />
 					</form>
@@ -84,7 +84,9 @@
 					<section class="content__main">
 						 
 						 <!-- result -->
-			            <div id="container-photos" class="row text-left"></div>
+			            <div id="container-photos" class="row text-left">
+			            	<div class="loader"></div>
+			            </div>
 
 					</section>
 				</div>

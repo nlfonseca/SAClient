@@ -23,7 +23,7 @@
         <%
 			String username = (String) session.getAttribute("username");
         	String userId = (String) session.getAttribute("userId");
-        	String pageName = "Vote in Your Favorite";
+        	String pageName = "Result";
 		%>
     	<div class="main-container">
     		<!-- nav -->
@@ -52,7 +52,14 @@
 				<div class="main-content">
 					<header class="content__header">
 						<h1 id="page-name"><%= pageName %></h1>
-						<div class="content__subtitle"></div>
+						<div class="content__subtitle">
+							See 
+							<select name="" id="" class="select-chart">
+								<option value="votesbycandidate">Candidates</option>
+								<option value="voteschangedofday">Votes Changed</option>
+								<option value="votesofday">Votes of Day</option>
+							</select>
+						</div>
 					</header>
 					
 					<section class="content__main">
@@ -73,7 +80,9 @@
 		<script src="js/main.js"></script>
 		<script src="js/amcharts/amcharts.js"></script>
 		<script src="js/amcharts/serial.js"></script>
-		<script src="js/chart-votes.js"></script>
+		<script src="js/admin.js"></script>
+		<!-- <script src="js/chart-votes.js"></script> -->
+		
         
     </body>
 

@@ -18,33 +18,31 @@ import org.json.JSONObject;
 import pt.saclient.business.GlobalVariables;
 
 /**
- * Servlet implementation class SetVote
+ * Servlet implementation class GetVoteOfUser
  */
-@WebServlet(description = "Set Vote", urlPatterns = { "/setvote" })
-public class SetVote extends HttpServlet {
+@WebServlet(description = "Get Vote Of User", urlPatterns = { "/getvoteofuser" })
+public class GetVoteOfUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SetVote() {
+    public GetVoteOfUser() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String uid = (String) session.getAttribute("usr_id");
+		int uid = (Integer) session.getAttribute("usr_id");
 		
-		String cid = request.getParameter("usr_cid");
-		
-		URL url = new URL("http://" + GlobalVariables.HOST + "/SARestFul_1.0.0/1.0/services/servidorjaxrs/services/vote?uid=" + uid + "&cid=" + cid);
+		URL url = new URL("http://" + GlobalVariables.HOST + "/SARestFul_1.0.0/1.0/services/servidorjaxrs/services/voteuser?uid=" + uid);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
-		con.setRequestMethod("POST");
+		con.setRequestMethod("GET");
 		con.setRequestProperty("Accept", "application/json");
 		
 		// Erro de conexao
@@ -55,7 +53,8 @@ public class SetVote extends HttpServlet {
 		InputStream stream = con.getInputStream();
 		String data = GlobalVariables.convertStreamToString(stream);
 		
-		response.getWriter().write(data);
+		response.setContentType("application/json");
+		response.getWriter().write(data.toString());
 	}
 
 }
